@@ -76,11 +76,14 @@ namespace LinqPadCsvFix
                 {
                     var obj = e.Current;
 
-                    var stackTrace = (string)obj.Find("StackTrace");
-                    if (stackTrace != null)
+                    const string stackTraceKey = "StackTrace";
+                    const string messageKey = "Message";
+                    if (obj.ContainsKey(stackTraceKey) && obj.ContainsKey(messageKey))
                     {
-                        Console.Error.WriteLine(obj["Message"]);
-                        Console.Error.WriteLine(stackTrace);
+                        Console.Error.WriteLine(obj[messageKey]);
+                        var stackTrace = obj[stackTraceKey];
+                        if (stackTrace != null)
+                            Console.Error.WriteLine(stackTrace);
                         return 0xbad;
                     }
 
