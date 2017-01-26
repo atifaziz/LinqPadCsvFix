@@ -26,6 +26,7 @@ namespace LinqPadCsvFix
 
     using System;
     using System.Collections.Generic;
+    using System.Diagnostics;
     using System.IO;
     using System.Linq;
     using System.Text;
@@ -53,10 +54,19 @@ namespace LinqPadCsvFix
 
         static int Wain(IEnumerable<string> args)
         {
+            var argList = args.ToList();
+
+            var debugFlagIndex = argList.IndexOf("--debug");
+            if (debugFlagIndex >= 0)
+            {
+                argList.RemoveAt(debugFlagIndex);
+                Debugger.Launch();
+            }
+
             var map =
-                args.Select(arg => arg.Split(new[] { '=' }, 2)
-                                      .Fold((outName, inName) => inName.AsKeyTo(outName)))
-                    .ToDictionary(e => e.Key, e => e.Value, StringComparer.OrdinalIgnoreCase);
+                argList.Select(arg => arg.Split(new[] { '=' }, 2)
+                                         .Fold((outName, inName) => inName.AsKeyTo(outName)))
+                       .ToDictionary(e => e.Key, e => e.Value, StringComparer.OrdinalIgnoreCase);
 
             var reader = Console.In;
             var i = 0;
