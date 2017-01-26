@@ -94,7 +94,7 @@ namespace LinqPadCsvFix
 
                     var fields =
                         from value in obj.Values
-                        select (value as string)?.Replace("\"", "\"\"") ?? value.ToString()
+                        select (value as string)?.Replace("\"", "\"\"") ?? value?.ToString()
                         into v
                         select "\"" + v + "\"";
 
