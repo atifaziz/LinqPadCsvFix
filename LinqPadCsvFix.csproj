@@ -33,10 +33,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Jayrock.Json, Version=0.9.16530.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>packages\jayrock-json.0.9.16530.1\lib\net40\Jayrock.Json.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -53,6 +49,7 @@
     <Compile Include="MoreLinq\MoreEnumerable.Fold.g.cs" />
     <Compile Include="MoreLinq\MoreEnumerable.Index.cs" />
     <Compile Include="Program.cs" />
+    <Compile Include="SimpleJson.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

@@ -31,7 +31,6 @@ namespace LinqPadCsvFix
     using System.Linq;
     using System.Text;
     using System.Text.RegularExpressions;
-    using Jayrock.Json.Conversion;
     using Mannex.Collections.Generic;
     using MoreLinq;
 
@@ -117,7 +116,7 @@ namespace LinqPadCsvFix
                 if (line[0] == '}')
                 {
                     sb.Append('}').AppendLine();
-                    yield return JsonConvert.Import<IDictionary<string, object>>(sb.ToString());
+                    yield return SimpleJson.DeserializeObject<IDictionary<string, object>>(sb.ToString());
                     sb.Clear();
                     if (line.Length == 1)
                         break;
