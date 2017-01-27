@@ -62,6 +62,12 @@ namespace LinqPadCsvFix
                 Debugger.Launch();
             }
 
+            if (argList.IndexOf("--license") >= 0)
+            {
+                Console.WriteLine(GetTextResource("NOTICE"));;
+                return 0;
+            }
+
             var map =
                 argList.Select(arg => arg.Split(new[] { '=' }, 2)
                                          .Fold((outName, inName) => inName.AsKeyTo(outName)))
@@ -105,6 +111,18 @@ namespace LinqPadCsvFix
             }
 
             return 0;
+        }
+
+        static string GetTextResource(string name)
+        {
+            using (var stream = typeof(Program).Assembly.GetManifestResourceStream(typeof(Program), name))
+            {
+                if (stream == null)
+                    throw new Exception($"Resouce named \"{name}\" not found.");
+
+                using (var sr = new StreamReader(stream))
+                    return sr.ReadToEnd();
+            }
         }
 
         static IEnumerator<IDictionary<string, object>> Read(TextReader reader)
