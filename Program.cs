@@ -110,6 +110,9 @@ namespace LinqPadCsvFix
                 }
             }
 
+            if (i == 0)
+                throw new Exception("Missing input.");
+
             return 0;
         }
 

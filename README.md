@@ -213,6 +213,9 @@ is therefore designed to be used in a pipe after `lprun` as shown below:
 
     lprun test.linq | lpcsvfix > test.csv
 
+`lpcsvfix` will end with a non-zero exit code if it receives zero lines of
+input.
+
 
 ## Limitations
 
