@@ -53,10 +53,54 @@ objects:
       "SquareOfX": 100
     }
 
-Note that the output as a whole is not valid JSON so it cannot be parsed such.
-Instead, each object has to be parsed out individually as JSON and
-LinqPadCsvFix does exactly that followed by conversion to CSV. The output above
-is fixed to:
+Version 5.22 changed this slightly by having opening & closing braces
+appearing on separate lines:
+
+    {
+      "X": 1,
+      "SquareOfX": 1
+    }
+    {
+      "X": 2,
+      "SquareOfX": 4
+    }
+    {
+      "X": 3,
+      "SquareOfX": 9
+    }
+    {
+      "X": 4,
+      "SquareOfX": 16
+    }
+    {
+      "X": 5,
+      "SquareOfX": 25
+    }
+    {
+      "X": 6,
+      "SquareOfX": 36
+    }
+    {
+      "X": 7,
+      "SquareOfX": 49
+    }
+    {
+      "X": 8,
+      "SquareOfX": 64
+    }
+    {
+      "X": 9,
+      "SquareOfX": 81
+    }
+    {
+      "X": 10,
+      "SquareOfX": 100
+    }
+
+Either way, note that the output as a whole is not valid JSON so it cannot be
+parsed such. Instead, each object has to be parsed out individually as JSON
+and LinqPadCsvFix does exactly that followed by conversion to CSV. The output
+above is fixed to:
 
     "X","SQUARE_OF_X"
     "1","1"

@@ -140,7 +140,7 @@ namespace LinqPadCsvFix
                     yield return SimpleJson.DeserializeObject<IDictionary<string, object>>(sb.ToString());
                     sb.Clear();
                     if (line.Length == 1)
-                        break;
+                        continue;
                     line = line.Substring(1);
                 }
                 sb.AppendLine(line);
